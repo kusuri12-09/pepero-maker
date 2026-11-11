@@ -138,7 +138,7 @@
       decoration.classList.toggle("crumbs", topping in crumbFiles);
       decoration.textContent = "";
       decoration.style.backgroundColor = topping === 0 ? whiteDrizzle : topping === 1 ? "#593b2c" : "transparent";
-      decoration.style.backgroundImage = topping > 1 ? 'url("public/icons/' + (crumbFiles[topping] ?? iconFiles[2][topping]) + '.svg?v=11")' : "none";
+      decoration.style.backgroundImage = topping > 1 ? `url("${images.get(crumbFiles[topping] ?? iconFiles[2][topping]).src}")` : "none";
       ctx.save();
       ctx.translate(111 + index * 72, 22);
       ctx.shadowColor = "#69534452";
