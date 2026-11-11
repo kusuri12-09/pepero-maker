@@ -78,8 +78,10 @@ class Handler(SimpleHTTPRequestHandler):
             share_url = html.escape(origin + '/share/' + name, quote=True)
             page = f'''<!doctype html><html lang="ko"><head><meta charset="utf-8">
 <title>나만의 빼빼로 만들기</title><meta property="og:type" content="website">
-<meta property="og:title" content="나만의 빼빼로 메이커">
+<meta property="og:title" content="나만의 빼빼로 만들기">
 <meta property="og:image" content="{image_url}"><meta property="og:url" content="{share_url}">
+<meta name="description" content="나도 만들어보기"><meta property="og:description" content="나도 만들어보기">
+<meta name="twitter:title" content="나만의 빼빼로 만들기"><meta name="twitter:description" content="나도 만들어보기">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{image_url}">
 <script>location.replace('/');</script></head><body><a href="/">나도 만들어보기</a></body></html>'''

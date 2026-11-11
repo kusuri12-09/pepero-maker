@@ -83,8 +83,10 @@ export default {
       const shareUrl = `${url.origin}/share/${match[1]}`;
       const imageUrl = `${shareUrl}/image.png`;
       const page = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>나만의 빼빼로 만들기</title>
-<meta property="og:type" content="website"><meta property="og:title" content="나만의 빼빼로 메이커">
+<meta property="og:type" content="website"><meta property="og:title" content="나만의 빼빼로 만들기">
 <meta property="og:url" content="${shareUrl}"><meta property="og:image" content="${imageUrl}">
+<meta name="description" content="나도 만들어보기"><meta property="og:description" content="나도 만들어보기">
+<meta name="twitter:title" content="나만의 빼빼로 만들기"><meta name="twitter:description" content="나도 만들어보기">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${imageUrl}">
 <script>location.replace('/');</script></head><body><a href="/">나도 만들어보기</a></body></html>`;

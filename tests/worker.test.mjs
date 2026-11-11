@@ -32,7 +32,11 @@ test('upload creates durable image and absolute crawler metadata', async () => {
   assert.equal(response.status, 201);
   const { url } = await response.json();
   const page = await worker.fetch(new Request('https://pepero.example' + url), env);
-  assert.match(await page.text(), new RegExp(`https://pepero.example${url}/image.png`));
+  const html = await page.text();
+  assert.match(html, new RegExp(`https://pepero.example${url}/image.png`));
+  assert.match(html, /property="og:title" content="나만의 빼빼로 만들기"/);
+  assert.match(html, /property="og:description" content="나도 만들어보기"/);
+  assert.doesNotMatch(html, /og:site_name/);
   const image = await worker.fetch(new Request('https://pepero.example' + url + '/image.png'), env);
   assert.equal(image.headers.get('Content-Type'), 'image/png');
   assert.deepEqual(Buffer.from(await image.arrayBuffer()), card);
@@ -55,4 +59,13 @@ test('missing shares return 404 and home metadata uses deployment origin', async
   assert.equal((await worker.fetch(new Request('https://pepero.example/share/' + '0'.repeat(32)), env)).status, 404);
   const page = await worker.fetch(new Request('https://pepero.example/'), env);
   assert.match(await page.text(), /https:\/\/pepero.example\/public\/og-image.png/);
+});
+
+test('home card keeps site name and title without duplicate description', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(html, /property="og:site_name" content="빼빼로 메이커"/);
+  assert.match(html, /property="og:title" content="나만의 빼빼로 만들기"/);
+  for (const tag of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
+    assert.ok(html.includes(`${tag} content=""`));
+  }
 });
