@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fff7e7"><meta name="description" content="과자부터 포장까지, 나만의 귀여운 빼빼로를 만들고 이미지로 간직해요."><title>빼빼로 만들기</title><style>
+  #pepero-wireframe { color-scheme: light; padding: 18px 0 26px; }
+  #pepero-wireframe .phone {
+    --ink: #704a40;
+    --line: #e9c5bc;
+    --screen: #fff7e7;
+    --panel: #fffdf7;
+    position: relative; width: min(344px, calc(100% - 16px)); margin: auto; overflow: hidden;
+    color: var(--ink); background: var(--screen); border: 2px solid var(--ink);
+    border-radius: 35px; font: 14px/1.4 "Arial Rounded MT Bold", system-ui, sans-serif; box-sizing: border-box;
+    box-shadow: 0 8px 0 #eed7c9, 0 16px 32px #704a4014;
+  }
+  #pepero-wireframe .preview {
+    position: relative; height: 316px; display: grid; place-items: center;
+    background-image: radial-gradient(#e6c8ac 1px, transparent 1px);
+    background-size: 23px 23px;
+  }
+  #pepero-wireframe .sheet {
+    position: relative; min-height: 215px; padding: 24px 19px 22px; background: var(--panel);
+    border-top: 2px solid var(--line); border-radius: 27px 27px 0 0;
+  }
+  #pepero-wireframe .sheet::before { content: ""; position: absolute; top: 8px; left: calc(50% - 15px); width: 30px; height: 4px; background: #efd6ce; border-radius: 5px; }
+  #pepero-wireframe .progress-dots {
+    position: absolute; z-index: 1; top: 23px; inset-inline: 0;
+    display: flex; justify-content: center; gap: 8px; pointer-events: none;
+  }
+  #pepero-wireframe .progress-dots i { width: 7px; height: 7px; border: 1.5px solid #ba8c7d; border-radius: 50%; background: #fffaf0; }
+  #pepero-wireframe .progress-dots .active { background: var(--ink); border-color: var(--ink); }
+  #pepero-wireframe h2 { margin: 0 0 17px; font-size: 19px; color: inherit; font-weight: 700; text-align: center; letter-spacing: -.6px; }
+  #pepero-wireframe .choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+  #pepero-wireframe .choices[data-columns="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #pepero-wireframe button {
+    display: grid; justify-items: center; align-content: center; min-height: 75px; gap: 8px;
+    padding: 10px 4px; border: 1.5px solid #ddb0a7; border-radius: 17px;
+    color: inherit; background: #ffe4e5; font: inherit; font-size: 12px; font-weight: 600;
+    box-shadow: 0 3px 0 #eac3bd; transition: background .15s, transform .15s;
+  }
+  #pepero-wireframe button:hover { background: #ffd4d9; border-color: #ac7569; transform: translateY(-2px); }
+  #pepero-wireframe button:active { transform: translateY(2px); box-shadow: none; }
+  #pepero-wireframe button:focus-visible { outline: 3px solid #9e6256; outline-offset: 3px; }
+  #pepero-wireframe button span { font-size: 23px; line-height: 25px; color: #aa626b; }
+  #pepero-wireframe button[data-kind="biscuit"] span { width: 11px; height: 30px; border: 1.5px solid #986649; border-radius: 5px; background: var(--sample); box-shadow: inset -3px 0 #704a4014; transform: rotate(22deg); }
+  #pepero-wireframe button[data-kind="chocolate"] span { width: 27px; height: 27px; border: 1.5px solid #986649; border-radius: 5px; background: linear-gradient(90deg,transparent 46%,#98664966 46% 53%,transparent 53%),linear-gradient(transparent 46%,#98664966 46% 53%,transparent 53%),var(--sample); box-shadow: inset 2px 2px #ffffff44; transform: rotate(-9deg); }
+  #pepero-wireframe .feedback { margin: 8px 0 0; font-size: 12px; }
+
+html { background: #fff7e7; color-scheme: light; }
+body { margin: 0; min-height: 100svh; display: grid; place-items: center; }
+#pepero-wireframe .preview { height: auto; aspect-ratio: 338 / 316; background: none; }
+#pepero-wireframe canvas { width: 100%; height: 100%; display: block; }
+#pepero-wireframe .choices[data-columns="1"] { grid-template-columns: 1fr; }
+#pepero-wireframe .choices[data-columns="1"] button { min-height: 48px; display: flex; justify-content: center; }
+#pepero-wireframe .choices[data-columns="1"] button:last-child { background: #fff7e7; box-shadow: none; }
+.share-link { display: block; width: 100%; box-sizing: border-box; margin-top: 12px; padding: 10px; border: 1px solid #ddb0a7; border-radius: 8px; color: #704a40; background: #fff7e7; font-size: 16px; }
+.share-link[hidden] { display: none; }
+@media (max-width: 400px) { body { display: block; } #pepero-wireframe { padding: 0; } #pepero-wireframe .phone { width: 100%; border: 0; border-radius: 0; box-shadow: none; min-height: 100svh; } #pepero-wireframe .sheet { box-sizing: border-box; min-height: 240px; } }
+</style></head><body>
+<main id="pepero-wireframe"><section class="phone" aria-label="빼빼로 만들기">
+<div class="progress-dots" role="img" aria-label="4단계 중 1단계"><i></i><i></i><i></i><i></i></div>
+<div class="preview"><canvas width="1014" height="948" role="img" aria-label="막대과자 두 개 미리보기"></canvas></div>
+<section class="sheet"><h2 aria-live="polite"></h2><div class="choices"></div><p class="feedback" role="status" hidden></p><input class="share-link" aria-label="공유할 사이트 링크" readonly hidden></section>
+</section></main><script src="app.js"></script></body></html>
