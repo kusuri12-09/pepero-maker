@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fff9ef"><meta name="description" content="과자부터 포장까지, 나만의 귀여운 빼빼로를 만들고 이미지로 간직해요."><title>빼빼로 메이커</title><link rel="icon" type="image/svg+xml" href="public/favicon.svg"><style>
+@font-face {
+  font-family: "Pretendard";
+  src: url("public/fonts/PretendardVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face { font-family: "Cafe24Ssurround"; src: url("public/fonts/Cafe24Ssurround.woff") format("woff"); font-weight: 400; font-display: swap; }
+:root {
+  color-scheme: light;
+  --brand-primary: #e87565;
+  --brand-hover: #dd6657;
+  --tds-grey900: #191f28;
+  --tds-grey700: #4e5968;
+  --tds-grey500: #8b95a1;
+  --tds-grey200: #e5e8eb;
+  --tds-grey100: #f2f4f6;
+  --tds-grey50: #f9fafb;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #fff9ef;
+  color: var(--tds-grey900);
+}
+* { box-sizing: border-box; -webkit-user-select: none; user-select: none; }
+body {
+  margin: 0;
+  background: #fff9ef;
+}
+.phone {
+  background-color: #b8875d;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 110px, #69432638 110px 111px, #efd1ac24 111px 112px),
+    repeating-linear-gradient(2deg, transparent 0 8px, #603d2114 8px 9px, transparent 9px 17px),
+    linear-gradient(100deg, #e9c59d38, transparent 55%, #67412830);
+}
+#pepero-wireframe { width: 100%; }
+.phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 480px);
+  height: 100dvh;
+  margin: 0 auto;
+  padding-top: 56px;
+}
+.progress-dots {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #fff9ef;
+  box-shadow: 0 2px 8px #704a4010;
+  pointer-events: none;
+}
+.progress-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--tds-grey200); }
+.progress-dots .active { background: var(--brand-primary); }
+.back-button { display: flex; align-items: center; justify-content: center; gap: 5px; min-height: 44px; margin-bottom: 16px; padding: 8px 14px; border-radius: 12px; background: var(--tds-grey100); font-size: 15px; }
+.back-button span { width: 18px; height: 18px; display: grid; place-items: center; }
+.back-button span::before { content: ""; width: 7px; height: 7px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateX(2px) rotate(45deg); }
+.preview { position: relative; flex: 1; min-height: 0; }
+.pepero-scene { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 280px; height: 356px; }
+.pepero-scene::before {
+  content: "";
+  position: absolute;
+  width: min(340px, calc(100vw - 24px));
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, #eeefec 0 79%, #e5e6e2 80.5%, #fdfdfb 82% 100%);
+  box-shadow: 0 2px 0 #e9e0d1, 0 5px 12px #71502b14;
+}
+.pepero-stick { position: absolute; top: 42px; width: 44px; height: 270px; border-radius: 24px; background: var(--biscuit, #f5e6bd); }
+.pepero-stick:first-child { left: 82px; }
+.pepero-stick:nth-child(2) { left: 154px; }
+.pepero-stick { filter: drop-shadow(4px 6px 5px var(--stick-shadow, #69534452)); }
+.coating { position: absolute; inset: -3px -3px auto; height: 227px; border-radius: 25px; background: var(--chocolate, transparent); }
+.toppings { position: absolute; inset: 0; white-space: pre-line; text-align: center; color: #fff; font: 18px/29px sans-serif; padding-top: 20px; }
+.toppings.sauce { inset: 15px -13px auto; padding: 0; width: 70px; height: 210px; background: #fff; clip-path: path("M 58.200 10.000 L 58.121 11.144 L 57.886 12.273 L 57.507 13.376 L 56.998 14.451 L 56.369 15.502 L 55.629 16.533 L 54.784 17.550 L 53.839 18.556 L 52.800 19.555 L 51.671 20.545 L 50.457 21.529 L 49.166 22.504 L 47.803 23.470 L 46.377 24.424 L 44.895 25.365 L 43.366 26.291 L 41.798 27.198 L 40.202 28.085 L 38.585 28.950 L 36.957 29.788 L 35.328 30.598 L 33.708 31.379 L 32.116 32.150 L 30.566 32.915 L 29.067 33.674 L 27.630 34.426 L 26.266 35.169 L 24.985 35.900 L 23.798 36.618 L 22.716 37.319 L 21.747 37.996 L 20.902 38.645 L 20.189 39.254 L 19.614 39.812 L 19.180 40.303 L 18.884 40.709 L 18.708 41.012 L 18.628 41.206 L 18.603 41.300 L 18.600 41.333 L 18.603 41.367 L 18.628 41.461 L 18.708 41.654 L 18.884 41.958 L 19.180 42.364 L 19.614 42.855 L 20.189 43.413 L 20.902 44.022 L 21.747 44.670 L 22.716 45.348 L 23.798 46.048 L 24.985 46.766 L 26.266 47.498 L 27.630 48.241 L 29.067 48.992 L 30.566 49.751 L 32.116 50.517 L 33.708 51.288 L 35.331 52.064 L 36.973 52.845 L 38.626 53.631 L 40.279 54.421 L 41.921 55.217 L 43.544 56.018 L 45.139 56.826 L 46.698 57.641 L 48.211 58.465 L 49.672 59.300 L 51.075 60.148 L 52.414 61.015 L 53.684 61.904 L 54.880 62.822 L 56.000 63.779 L 57.036 64.788 L 57.983 65.864 L 58.828 67.025 L 59.548 68.288 L 60.111 69.661 L 60.474 71.134 L 60.600 72.667 L 60.474 74.200 L 60.111 75.672 L 59.548 77.046 L 58.828 78.309 L 57.983 79.469 L 57.036 80.545 L 56.000 81.554 L 54.880 82.511 L 53.684 83.430 L 52.414 84.319 L 51.075 85.185 L 49.672 86.034 L 48.211 86.869 L 46.698 87.693 L 45.139 88.508 L 43.544 89.315 L 41.921 90.117 L 40.279 90.912 L 38.626 91.703 L 36.973 92.489 L 35.331 93.269 L 33.708 94.046 L 32.116 94.817 L 30.566 95.582 L 29.067 96.341 L 27.630 97.093 L 26.266 97.835 L 24.985 98.567 L 23.798 99.285 L 22.716 99.985 L 21.747 100.663 L 20.902 101.311 L 20.189 101.921 L 19.614 102.479 L 19.180 102.969 L 18.884 103.375 L 18.708 103.679 L 18.628 103.872 L 18.603 103.966 L 18.600 104.000 L 18.603 104.034 L 18.628 104.128 L 18.708 104.321 L 18.884 104.625 L 19.180 105.031 L 19.614 105.521 L 20.189 106.079 L 20.902 106.689 L 21.747 107.337 L 22.716 108.015 L 23.798 108.715 L 24.985 109.433 L 26.266 110.165 L 27.630 110.907 L 29.067 111.659 L 30.566 112.418 L 32.116 113.183 L 33.708 113.954 L 35.331 114.731 L 36.973 115.511 L 38.626 116.297 L 40.279 117.088 L 41.921 117.883 L 43.544 118.685 L 45.139 119.492 L 46.698 120.307 L 48.211 121.131 L 49.672 121.966 L 51.075 122.815 L 52.414 123.681 L 53.684 124.570 L 54.880 125.489 L 56.000 126.446 L 57.036 127.455 L 57.983 128.531 L 58.828 129.691 L 59.548 130.954 L 60.111 132.328 L 60.474 133.800 L 60.600 135.333 L 60.474 136.866 L 60.111 138.339 L 59.548 139.712 L 58.828 140.975 L 57.983 142.136 L 57.036 143.212 L 56.000 144.221 L 54.880 145.178 L 53.684 146.096 L 52.414 146.985 L 51.075 147.852 L 49.672 148.700 L 48.211 149.535 L 46.698 150.359 L 45.139 151.174 L 43.544 151.982 L 41.921 152.783 L 40.279 153.579 L 38.626 154.369 L 36.973 155.155 L 35.331 155.936 L 33.708 156.712 L 32.116 157.483 L 30.566 158.249 L 29.067 159.008 L 27.630 159.759 L 26.266 160.502 L 24.985 161.234 L 23.798 161.952 L 22.716 162.652 L 21.747 163.330 L 20.902 163.978 L 20.189 164.587 L 19.614 165.145 L 19.180 165.636 L 18.884 166.042 L 18.708 166.346 L 18.628 166.539 L 18.603 166.633 L 18.600 166.667 L 18.603 166.700 L 18.628 166.794 L 18.708 166.988 L 18.884 167.291 L 19.180 167.697 L 19.614 168.188 L 20.189 168.746 L 20.902 169.355 L 21.747 170.004 L 22.716 170.681 L 23.798 171.382 L 24.985 172.100 L 26.266 172.831 L 27.630 173.574 L 29.067 174.326 L 30.566 175.085 L 32.116 175.850 L 33.708 176.621 L 35.328 177.402 L 36.957 178.212 L 38.585 179.050 L 40.202 179.915 L 41.798 180.802 L 43.366 181.709 L 44.895 182.635 L 46.377 183.576 L 47.803 184.530 L 49.166 185.496 L 50.457 186.471 L 51.671 187.455 L 52.800 188.445 L 53.839 189.444 L 54.784 190.450 L 55.629 191.467 L 56.369 192.498 L 56.998 193.549 L 57.507 194.624 L 57.886 195.727 L 58.121 196.856 L 58.200 198.000 A 2.2 2.2 0 0 1 53.800 198.000 L 53.750 197.578 L 53.597 197.140 L 53.332 196.676 L 52.947 196.185 L 52.434 195.668 L 51.794 195.133 L 51.027 194.583 L 50.139 194.023 L 49.137 193.455 L 48.028 192.879 L 46.820 192.295 L 45.521 191.704 L 44.142 191.103 L 42.691 190.491 L 41.178 189.865 L 39.613 189.224 L 38.006 188.565 L 36.369 187.885 L 34.710 187.183 L 33.043 186.455 L 31.376 185.698 L 29.721 184.912 L 28.079 184.117 L 26.456 183.315 L 24.861 182.508 L 23.302 181.693 L 21.789 180.869 L 20.328 180.034 L 18.925 179.185 L 17.586 178.319 L 16.316 177.430 L 15.120 176.511 L 14.000 175.554 L 12.964 174.545 L 12.017 173.469 L 11.172 172.309 L 10.452 171.046 L 9.889 169.672 L 9.526 168.200 L 9.400 166.667 L 9.526 165.134 L 9.889 163.661 L 10.452 162.288 L 11.172 161.025 L 12.017 159.864 L 12.964 158.788 L 14.000 157.779 L 15.120 156.822 L 16.316 155.904 L 17.586 155.015 L 18.925 154.148 L 20.328 153.300 L 21.789 152.465 L 23.302 151.641 L 24.861 150.826 L 26.456 150.018 L 28.079 149.217 L 29.721 148.421 L 31.374 147.631 L 33.027 146.845 L 34.669 146.064 L 36.292 145.288 L 37.884 144.517 L 39.434 143.751 L 40.933 142.992 L 42.370 142.241 L 43.734 141.498 L 45.015 140.766 L 46.202 140.048 L 47.284 139.348 L 48.253 138.670 L 49.098 138.022 L 49.811 137.413 L 50.386 136.855 L 50.820 136.364 L 51.116 135.958 L 51.292 135.654 L 51.372 135.461 L 51.397 135.367 L 51.400 135.333 L 51.397 135.300 L 51.372 135.206 L 51.292 135.012 L 51.116 134.709 L 50.820 134.303 L 50.386 133.812 L 49.811 133.254 L 49.098 132.645 L 48.253 131.996 L 47.284 131.319 L 46.202 130.618 L 45.015 129.900 L 43.734 129.169 L 42.370 128.426 L 40.933 127.674 L 39.434 126.915 L 37.884 126.150 L 36.292 125.379 L 34.669 124.603 L 33.027 123.822 L 31.374 123.036 L 29.721 122.246 L 28.079 121.450 L 26.456 120.649 L 24.861 119.841 L 23.302 119.026 L 21.789 118.202 L 20.328 117.367 L 18.925 116.518 L 17.586 115.652 L 16.316 114.763 L 15.120 113.845 L 14.000 112.887 L 12.964 111.879 L 12.017 110.803 L 11.172 109.642 L 10.452 108.379 L 9.889 107.006 L 9.526 105.533 L 9.400 104.000 L 9.526 102.467 L 9.889 100.994 L 10.452 99.621 L 11.172 98.358 L 12.017 97.197 L 12.964 96.121 L 14.000 95.113 L 15.120 94.155 L 16.316 93.237 L 17.586 92.348 L 18.925 91.482 L 20.328 90.633 L 21.789 89.798 L 23.302 88.974 L 24.861 88.159 L 26.456 87.351 L 28.079 86.550 L 29.721 85.754 L 31.374 84.964 L 33.027 84.178 L 34.669 83.397 L 36.292 82.621 L 37.884 81.850 L 39.434 81.085 L 40.933 80.326 L 42.370 79.574 L 43.734 78.831 L 45.015 78.100 L 46.202 77.382 L 47.284 76.681 L 48.253 76.004 L 49.098 75.355 L 49.811 74.746 L 50.386 74.188 L 50.820 73.697 L 51.116 73.291 L 51.292 72.988 L 51.372 72.794 L 51.397 72.700 L 51.400 72.667 L 51.397 72.633 L 51.372 72.539 L 51.292 72.346 L 51.116 72.042 L 50.820 71.636 L 50.386 71.145 L 49.811 70.587 L 49.098 69.978 L 48.253 69.330 L 47.284 68.652 L 46.202 67.952 L 45.015 67.234 L 43.734 66.502 L 42.370 65.759 L 40.933 65.008 L 39.434 64.249 L 37.884 63.483 L 36.292 62.712 L 34.669 61.936 L 33.027 61.155 L 31.374 60.369 L 29.721 59.579 L 28.079 58.783 L 26.456 57.982 L 24.861 57.174 L 23.302 56.359 L 21.789 55.535 L 20.328 54.700 L 18.925 53.852 L 17.586 52.985 L 16.316 52.096 L 15.120 51.178 L 14.000 50.221 L 12.964 49.212 L 12.017 48.136 L 11.172 46.975 L 10.452 45.712 L 9.889 44.339 L 9.526 42.866 L 9.400 41.333 L 9.526 39.800 L 9.889 38.328 L 10.452 36.954 L 11.172 35.691 L 12.017 34.531 L 12.964 33.455 L 14.000 32.446 L 15.120 31.489 L 16.316 30.570 L 17.586 29.681 L 18.925 28.815 L 20.328 27.966 L 21.789 27.131 L 23.302 26.307 L 24.861 25.492 L 26.456 24.685 L 28.079 23.883 L 29.721 23.088 L 31.376 22.302 L 33.043 21.545 L 34.710 20.817 L 36.369 20.115 L 38.006 19.435 L 39.613 18.776 L 41.178 18.135 L 42.691 17.509 L 44.142 16.897 L 45.521 16.296 L 46.820 15.705 L 48.028 15.121 L 49.137 14.545 L 50.139 13.977 L 51.027 13.417 L 51.794 12.867 L 52.434 12.332 L 52.947 11.815 L 53.332 11.324 L 53.597 10.860 L 53.750 10.422 L 53.800 10.000 A 2.2 2.2 0 0 1 58.200 10.000 Z"); }
+.preview canvas { display: none; }
+.package-preview { position: absolute; left: -6px; top: 32px; width: 292px; height: 292px; z-index: 1; background: center / contain no-repeat; filter: drop-shadow(0 3px 4px #71502b20); }
+.pepero-scene::before { z-index: 0; }
+.pepero-stick { z-index: 2; }
+.sheet {
+  flex-shrink: 0;
+  margin: 16px 14px max(22px, env(safe-area-inset-bottom));
+  padding: 26px 20px 28px;
+  background: #fff9ed;
+  border: 1px solid #e7d9bf;
+  border-radius: 26px;
+  box-shadow: inset 0 0 0 5px #faf0dd, 0 4px 0 #d8c4a2, 0 12px 24px #704a4014;
+  color: #57463b;
+}
+.tray-controls .back-button { background: #fff9ed; border: 1px solid #e7d9bf; color: #786556; box-shadow: none; }
+.tray-controls .back-button:hover { background: #f7d2c7; border-color: #f0c8bd; color: #964b3f; }
+.sheet h2 { text-align: left; font-size: 22px; line-height: 31px; }
+h2 { margin: 0 0 24px; font-size: 24px; line-height: 34px; font-weight: 700; letter-spacing: -.5px; }
+.choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.choices[data-columns="4"] { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.choices[data-columns="1"] { grid-template-columns: 1fr; gap: 10px; }
+button {
+  appearance: none;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  min-width: 0;
+  min-height: 104px;
+  gap: 14px;
+  padding: 16px 8px;
+  border: 2px solid transparent;
+  border-radius: 18px;
+  background: #f5ecdc;
+  color: #6c5848;
+  box-shadow: inset 0 1px 0 #fffaf0;
+  font: inherit;
+  font-size: 15px;
+  line-height: 22.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+button:hover { background: #f0e4cf; color: #6c5848; }
+button[aria-pressed="true"] { background: #fff0e6; border-color: var(--brand-primary); box-shadow: none; color: #964b3f; }
+button:active { transform: scale(.98); }
+button:focus-visible { outline: 3px solid var(--brand-primary); outline-offset: 3px; }
+button:disabled { opacity: .45; cursor: wait; }
+button span { display: inline-grid; place-items: center; font-size: 28px; line-height: 30px; color: inherit; }
+button[data-kind="biscuit"] .option-icon::before { content: ""; width: 12px; height: 32px; border-radius: 5px; background: var(--sample); box-shadow: inset -3px 0 #704a4014; transform: rotate(22deg); }
+button[data-kind="chocolate"] span { width: 30px; height: 30px; border-radius: 5px; background: linear-gradient(90deg,transparent 46%,#98664944 46% 53%,transparent 53%),linear-gradient(transparent 46%,#98664944 46% 53%,transparent 53%),var(--sample); box-shadow: inset 2px 2px #ffffff44; transform: rotate(-9deg); }
+.choices[data-columns="1"] button { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; padding: 14px 20px; font-size: 17px; line-height: 25.5px; }
+.choices[data-columns="1"] button:first-child { background: var(--brand-primary); color: #40231f; }
+.choices[data-columns="1"] button:first-child:hover { background: var(--brand-hover); }
+.choices[data-columns="1"] button:nth-child(2) { background: #f5ecdc; color: #6c5848; }
+.choices[data-columns="1"] button:last-child { background: transparent; border-color: transparent; box-shadow: none; color: #786556; }
+.choices[data-columns="1"] button span { font-size: 20px; line-height: 24px; }
+.feedback { margin: 16px 0 0; color: var(--tds-grey700); font-size: 15px; line-height: 22.5px; }
+.share-link { width: 100%; margin-top: 12px; padding: 16px; border: 1px solid var(--tds-grey200); border-radius: 12px; background: var(--tds-grey50); color: var(--tds-grey900); font: inherit; font-size: 16px; }
+.share-link:focus-visible { outline: 2px solid var(--brand-primary); }
+[hidden] { display: none !important; }
+.phone:not(.is-complete) .sheet { height: 240px; display: flex; flex-direction: column; }
+.phone:not(.is-complete) .choices { flex: 1; min-height: 0; grid-auto-rows: 104px; align-content: start; }
+.choices[data-step="2"] { overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: thin; scrollbar-color: #e9b5a6 transparent; padding: 3px; scroll-padding: 3px; }
+@media (max-height: 760px) {
+  .phone:not(.is-complete) .sheet { height: 200px; }
+  .phone:not(.is-complete) .choices { grid-auto-rows: 76px; }
+  .sheet { margin: 10px 14px max(14px, env(safe-area-inset-bottom)); padding: 18px 18px 20px; }
+  h2 { margin-bottom: 14px; }
+  .back-button { margin-bottom: 10px; }
+  button { min-height: 76px; gap: 8px; padding: 10px 6px; }
+  .choices { gap: 8px; }
+  .choices[data-columns="1"] { gap: 6px; }
+  .choices[data-columns="1"] button { min-height: 44px; padding: 8px 12px; }
+}
+@media (max-height: 500px) and (min-width: 520px) {
+  .phone:not(.is-complete) .sheet { height: 172px; }
+  .phone:not(.is-complete) .choices { grid-auto-rows: 64px; }
+  .phone { width: min(100%, 760px); flex-direction: row; align-items: stretch; }
+  .selection-area { width: 56%; align-self: end; }
+  .sheet { margin: 8px 14px 14px; padding: 12px 16px; }
+  .sheet h2 { font-size: 20px; line-height: 26px; margin-bottom: 10px; }
+  .back-button { min-height: 36px; margin-bottom: 6px; padding: 4px 10px; }
+  button { min-height: 64px; gap: 4px; padding: 6px; }
+  .choices[data-columns="1"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) { button { transition: none; } }
+
+.selection-area { flex-shrink: 0; }
+.tray-controls { position: relative; display: flex; align-items: center; min-height: 44px; margin: 0 14px; }
+.tray-controls .back-button { margin: 0; width: 36px; height: 36px; min-height: 36px; padding: 0; border-radius: 50%; }
+.tray-toggle { position: absolute; left: 50%; top: 12px; z-index: 1; translate: -50% 0; display: grid; place-items: center; width: 44px; height: 44px; min-height: 44px; padding: 0; border: 0; background: transparent; box-shadow: none; color: #964b3f; }
+.tray-toggle:hover { background: transparent; color: #78382e; }
+.tray-toggle span { width: 16px; height: 16px; display: grid; place-items: center; }
+.tray-toggle span::before { content: ""; width: 9px; height: 9px; border-bottom: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); transition: transform 360ms ease; }
+.tray-region { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 420ms cubic-bezier(.22,1,.36,1); }
+.tray-clip { min-height: 0; overflow: hidden; }
+.tray-region .sheet { transition: transform 420ms cubic-bezier(.22,1,.36,1), opacity 300ms ease; }
+.selection-area.is-collapsed .tray-region { grid-template-rows: 0fr; }
+.selection-area.is-collapsed .sheet { transform: translateY(40px); opacity: 0; }
+.selection-area.is-collapsed .tray-toggle span::before { transform: rotate(225deg); }
+.selection-area.is-collapsed { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+@media (prefers-reduced-motion: reduce) { .tray-region, .tray-region .sheet, .tray-toggle span::before { transition: none; } }
+
+.phone.is-complete .pepero-scene { display: none; }
+.phone.is-complete .preview canvas {
+  display: block;
+  position: absolute;
+  top: 50%; left: 50%; translate: -50% -50%;
+  width: min(calc(100% - 64px), 400px);
+  transform: none;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  background: #fffdf8;
+  border: 12px solid #fffdf8;
+  border-bottom-width: 34px;
+  box-shadow: 0 5px 18px #71502b26;
+}
+.phone.is-complete .sheet { width: min(320px, calc(100% - 48px)); margin: 0 auto max(18px, env(safe-area-inset-bottom)); background: #fff9ed; border: 1px solid #f3e5d3; border-radius: 20px; box-shadow: 0 3px 12px #71502b18; padding: 10px; }
+.phone.is-complete .sheet h2 { display: none; }
+.phone.is-complete .choices { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.phone.is-complete .choices button { flex: 1; width: auto; height: 52px; min-height: 52px; padding: 10px 8px; gap: 6px; background: #fff9ed; color: #964b3f; border: 1px solid #edc5b7; border-radius: 16px; box-shadow: 0 2px 5px #71502b10; font-size: 14px; white-space: nowrap; }
+.phone.is-complete .choices button:first-child { background: #ff806b; color: #512b23; border-color: #ff806b; box-shadow: 0 4px 9px #b852392b; }
+.phone.is-complete .choices button:hover { background: #fbe0d8; }
+.phone.is-complete .choices button:first-child:hover { background: #ff826e; }
+.phone.is-complete .feedback { text-align: center; }
+
+.toppings:not(.sauce) { background-repeat: repeat-y; background-size: 20px 29px; background-position: center 20px; height: 194px; }
+.choices button img { display: block; width: 36px; height: 36px; object-fit: contain; }
+.phone:not(.is-complete) .choices button { min-height: 0; height: 100%; padding: 8px 4px; gap: 6px; font-size: 13px; line-height: 19.5px; }
+.choices button img { width: 32px; height: 32px; }
+.choices[data-step="2"] { padding: 0; }
+@media (max-height: 760px) { .phone:not(.is-complete) .choices { grid-auto-rows: 96px; } }
+@media (max-height: 500px) and (min-width: 520px) { .phone:not(.is-complete) .choices { grid-auto-rows: 86px; } }
+.toppings.crumbs { inset: -11px auto auto -11px; width: 66px; height: 243px; padding: 0; border-radius: 25px; background-repeat: no-repeat; background-size: 100% 100%; background-position: center; }
+
+.phone:not(.is-complete) .choices { grid-auto-rows: 104px; }
+.phone:not(.is-complete) .choices button { padding: 3px 2px; gap: 2px; }
+.phone:not(.is-complete) .choices .option-icon { width: 52px; height: 52px; border-radius: 50%; background: #fffdf8; display: grid; place-items: center; }
+.choices .option-icon img { width: 44px; height: 44px; }
+.choices .light-icon img, button[data-kind="biscuit"] .light-icon::before { filter: drop-shadow(0 1px 1px #795b3c30); }
+.completion-title { display: none; }
+.phone.is-complete { padding-top: 20px; }
+.phone.is-complete .progress-dots { display: none; }
+.completion-title span, .completion-title strong { -webkit-text-stroke: 3px #fff9ed; paint-order: stroke fill; }
+.phone.is-complete .completion-title { font-family: "Cafe24Ssurround", sans-serif; font-weight: 400 !important; }
+.completion-title span { display: block; font-size: 23px; line-height: 32px; }
+.completion-title strong { display: block; font-weight: 400; font-size: 36px; line-height: 46px; color: #d76455; }
+.phone.is-complete .completion-title { display: block; flex-shrink: 0; margin: 12px 18px 6px; text-align: center; color: #573c2d; font-size: 22px; line-height: 31px; font-weight: 700; letter-spacing: -.5px; }
+@media (max-width: 360px) { .phone.is-complete .completion-title { font-size: 20px; } }
+@media (max-height: 500px) and (min-width: 520px) { .phone.is-complete .completion-title { position: absolute; top: 46px; left: 10px; width: 41%; font-size: 16px; line-height: 24px; margin: 0; } .phone.is-complete .preview { margin-top: 28px; } }
+</style></head><body>
+<main id="pepero-wireframe"><section class="phone" aria-label="빼빼로 만들기">
+<div class="progress-dots" role="img" aria-label="4단계 중 1단계"><i></i><i></i><i></i><i></i></div>
+<p class="completion-title"><span>나만의 빼빼로가</span><strong>완성되었어요!</strong></p>
+<div class="preview"><div class="pepero-scene" role="img" aria-label="막대과자 두 개 미리보기"><div class="pepero-stick"><div class="coating"></div><div class="toppings"></div></div><div class="pepero-stick"><div class="coating"></div><div class="toppings"></div></div><div class="package-preview" hidden></div></div><canvas width="1080" height="1068" aria-hidden="true"></canvas></div>
+<div class="selection-area">
+<div class="tray-controls"><button type="button" class="back-button" aria-label="이전 단계로" hidden><span aria-hidden="true"></span></button><button type="button" class="tray-toggle" aria-label="트레이 접기" aria-expanded="true" aria-controls="tray-content"><span aria-hidden="true"></span></button></div>
+<div class="tray-region"><div class="tray-clip" id="tray-content"><section class="sheet"><h2 aria-live="polite"></h2><div class="choices"></div><p class="feedback" role="status" hidden></p><input class="share-link" aria-label="공유할 사이트 링크" readonly hidden></section>
+</div></div></div></section></main><script src="app.js?v=61"></script></body></html>
