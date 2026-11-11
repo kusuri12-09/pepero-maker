@@ -285,28 +285,28 @@
 
   async function shareImage() {
     await imageBlob();
-    await document.fonts.load('68px Cafe24Ssurround');
+    await document.fonts.load('52px Cafe24Ssurround');
     const card = document.createElement("canvas");
     card.width = 1200;
     card.height = 630;
     const brush = card.getContext("2d");
     brush.fillStyle = "#fff9ed";
     brush.fillRect(0, 0, 1200, 630);
-    brush.font = '68px Cafe24Ssurround';
+    brush.drawImage(canvas, 560, 0, 640, 640 * 1068 / 1080);
+    brush.font = '52px Cafe24Ssurround';
     brush.lineJoin = "round";
     brush.lineWidth = 10;
     brush.strokeStyle = "#fff";
-    brush.strokeText("나만의 빼빼로 메이커", 52, 124);
+    const titleX = (560 - brush.measureText("나만의 빼빼로 메이커").width) / 2;
+    brush.strokeText("나만의 빼빼로 메이커", titleX, 292);
     brush.fillStyle = "#573c2d";
-    brush.fillText("나만의 ", 52, 124);
+    brush.fillText("나만의 ", titleX, 292);
     brush.fillStyle = "#e87565";
-    brush.fillText("빼빼로 메이커", 52 + brush.measureText("나만의 ").width, 124);
-    brush.font = '36px Cafe24Ssurround';
+    brush.fillText("빼빼로 메이커", titleX + brush.measureText("나만의 ").width, 292);
+    brush.font = '32px Cafe24Ssurround';
+    brush.textAlign = "center";
     brush.fillStyle = "#573c2d";
-    brush.fillText("나도 만들어보기", 56, 209);
-    brush.fillStyle = "#fffdf8";
-    brush.fillRect(714, 196, 410, 414);
-    brush.drawImage(canvas, 729, 211, 380, 380 * 1068 / 1080);
+    brush.fillText("나도 만들어보기", 280, 358);
     const blob = await new Promise((resolve, reject) => card.toBlob(result => result ? resolve(result) : reject(new Error("카드 생성 실패")), "image/png"));
     const response = await fetch("/api/shares", { method: "POST", headers: { "Content-Type": "image/png" }, body: blob });
     if (!response.ok) throw new Error("공유 링크 생성 실패");
