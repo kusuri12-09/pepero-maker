@@ -3,3 +3,5 @@ AGENTS.md
 dist/
 node_modules/
 
+.data/
+__pycache__/
